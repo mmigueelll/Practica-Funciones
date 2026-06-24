@@ -6,7 +6,6 @@ def mostrar_menu():
 4. Actualizar prioridad de atención
 5. Mostrar todas las consultas
 6. Salir""")
-    
 
 def leer_opcion():
     while True:
@@ -48,7 +47,7 @@ def validar_tipo_atencion(tipo_atencion):
 def validar_edad_paciente(edad_paciente):
     try:
         edad_paciente = int(edad_paciente)
-        if 0 <= edad_paciente <= 100:
+        if 0 <= edad_paciente <= 110:
             return True, ""
         else:
             return False, "Error: la edad mínima es 0 y la edad máxima es 110"
@@ -58,7 +57,7 @@ def validar_edad_paciente(edad_paciente):
 def validar_costo_consulta(costo_consulta):
     try:
         costo_consulta = float(costo_consulta)
-        if costo_consulta > 0:
+        if costo_consulta >= 0:
             return True, ""
         else:
             return False, "Error: debe ingresar un valor mayor a 0"
@@ -103,12 +102,12 @@ def agregar_consulta(consultas):
         else:
             print(mensajito)
     consulta = {
-        "codigo_paciente": codigo_paciente.title(),
+        "codigo_paciente": codigo_paciente.upper(),
         "nombre_completo": nombre_completo.title(),
         "tipo_atencion": tipo_atencion.upper(),
         "edad_paciente": int(edad_paciente),
         "costo_consulta": float(costo_consulta),
-        "prioridad_atencion": "Atención Normal"
+        "prioridad_atencion": "No tiene prioridad asignada"
 
     }
     consultas.append(consulta)
@@ -129,7 +128,7 @@ def mostrar_consultas(consultas):
 
 def busqueda_consulta(codigo_paciente,consultas):
     for posicion,consulta in enumerate(consultas):
-        if consulta["codigo_paciente"] == codigo_paciente:
+        if consulta["codigo_paciente"] == codigo_paciente.upper():
             return posicion
     return -1
 
@@ -161,7 +160,7 @@ while True:
         if len(consultas) == 0:
            print("No hay consultas aún")
         else:
-            codigo_paciente = input("Ingrese código de paciente a buscar: ").title()
+            codigo_paciente = input("Ingrese código de paciente a buscar: ").upper()
             posicion = busqueda_consulta(codigo_paciente,consultas)
             if posicion != -1:
                 print("La consulta se encuentra en la posición: N°",posicion+1)
@@ -173,7 +172,7 @@ while True:
         if len(consultas) == 0:
            print("No hay consultas aún")
         else:
-            codigo_paciente = input("Ingrese código de paciente a eliminar: ").title()
+            codigo_paciente = input("Ingrese código de paciente a eliminar: ").upper()
             eliminar_consulta(codigo_paciente,consultas)
     
     elif opcion == 4:
