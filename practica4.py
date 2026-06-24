@@ -19,7 +19,7 @@ def validar_opcion():
             print("Error: debe ingresar un número entero")
 
 def validar_codigo_arriendo(codigo_arriendo,arriendos):
-    if codigo_arriendo[0].upper() != "R":
+    if not codigo_arriendo.upper().startwith("R"):
         return False, "Error: el código debe empezar con R"
     elif len(codigo_arriendo) != 5:
         return False, "Error: el código debe tener exactamente 5 caracteres"
