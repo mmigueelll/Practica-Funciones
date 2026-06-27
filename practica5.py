@@ -120,7 +120,7 @@ def agregar_reserva(reservas):
             print(mensajito)
     reserva = {
         "codigo_reserva": codigo_reserva.upper(),
-        "numero_habitacion": int(numero_habitacion),
+        "numero_habitacion": numero_habitacion,
         "nombre_pasajero": nombre_pasajero.title(),
         "tipo_habitacion": tipo_habitacion.upper(),
         "noches_estadia": int(noches_estadia),
